@@ -16,16 +16,17 @@ void setup() {
   wsClient.beginSSL(WS_SERVER_URL, 443, "/");
   Serial.println("wsClient.beginSSL: " + WS_SERVER_URL + ", 443, /");
   wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
-    Serial.println("wsClient.onEvent");
     const bool hasData = type == WStype_TEXT && length > 0;
-    Serial.println("hasData: " + String(hasData));
+    Serial.print("Type: "); Serial.println(type);
+    Serial.print("Length: "); Serial.println(length);
+    Serial.print("Payload: "); Serial.println((char *)payload);
     if (!hasData) { return; }
+    Serial.println("🟩hasData: " + String(hasData));
     const String thisWsReceivedStringData = String((char *) payload).substring(0, length);
     Serial.println("payload: " + String((char *) payload));
     Serial.println("thisWsReceivedStringData: " + thisWsReceivedStringData);
     Serial.println(thisWsReceivedStringData);
   });
-  // wsClient.setReconnectInterval(5 * 1000);
 }
 
 void loop() {
