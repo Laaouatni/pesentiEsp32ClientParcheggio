@@ -28,4 +28,6 @@ void setup() {
   // wsClient.setReconnectInterval(5 * 1000);
 }
 
-void loop() {}
+void loop() {
+  wsClient.loop();
+}
