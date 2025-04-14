@@ -16,7 +16,7 @@ void setup() {
   wsClient.beginSSL(WS_SERVER_URL, 443, "/");
   Serial.println("wsClient.beginSSL: " + WS_SERVER_URL + ", 443, /");
   wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
-    const bool hasData = type == WStype_TEXT && length > 0;
+    const bool hasData = (char*)payload != "/" && length > 0;
     Serial.print("Type: "); Serial.println(type);
     Serial.print("Length: "); Serial.println(length);
     Serial.print("Payload: "); Serial.println((char *)payload);
