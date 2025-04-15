@@ -8,9 +8,9 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:/Users/laaou/Downloads/14-04-Code-1/pesentiEsp32ClientParcheggio/include",
-                "C:/Users/laaou/Downloads/14-04-Code-1/pesentiEsp32ClientParcheggio/src",
-                "C:/Users/laaou/Downloads/14-04-Code-1/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/WebSockets/src",
+                "C:/Users/laaou/Downloads/15-04-Code/pesentiEsp32ClientParcheggio/include",
+                "C:/Users/laaou/Downloads/15-04-Code/pesentiEsp32ClientParcheggio/src",
+                "C:/Users/laaou/Downloads/15-04-Code/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/WebSockets/src",
                 "C:/Users/laaou/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "C:/Users/laaou/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "C:/Users/laaou/.platformio/packages/framework-arduinoespressif32/libraries/Ethernet/src",
@@ -245,9 +245,9 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/laaou/Downloads/14-04-Code-1/pesentiEsp32ClientParcheggio/include",
-                    "C:/Users/laaou/Downloads/14-04-Code-1/pesentiEsp32ClientParcheggio/src",
-                    "C:/Users/laaou/Downloads/14-04-Code-1/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/WebSockets/src",
+                    "C:/Users/laaou/Downloads/15-04-Code/pesentiEsp32ClientParcheggio/include",
+                    "C:/Users/laaou/Downloads/15-04-Code/pesentiEsp32ClientParcheggio/src",
+                    "C:/Users/laaou/Downloads/15-04-Code/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/WebSockets/src",
                     "C:/Users/laaou/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "C:/Users/laaou/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "C:/Users/laaou/.platformio/packages/framework-arduinoespressif32/libraries/Ethernet/src",
