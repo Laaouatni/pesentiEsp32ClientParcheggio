@@ -21,17 +21,31 @@ void setup() {
     const String thisWsReceivedStringData =
         String((char *)payload).substring(0, length);
     if (thisWsReceivedStringData == "/") return;
-    Serial.println(thisWsReceivedStringData);
-
-
 
     const String wsKey = thisWsReceivedStringData.substring(0, thisWsReceivedStringData.indexOf(":"));
     const String wsValue = thisWsReceivedStringData.substring(thisWsReceivedStringData.indexOf(":")+1);
-    Serial.println("------");
     Serial.println("wsKey: " + wsKey);
     Serial.println("wsValue: " + wsValue);
 
-    // std::vector<String> splittedStringValues;
+    const char DELIMITER = ',';
+    std::vector<int> dimiliterPositions;
+
+    for(int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
+      const char thisChar = wsValue[forCharIndex];
+      const bool canGoToNextSplittedString = thisChar == DELIMITER;
+
+      if(!canGoToNextSplittedString) continue;
+      dimiliterPositions.push_back(forCharIndex);
+    }
+
+    Serial.println("----- positions -----");
+    for(int thisIndex : dimiliterPositions) {
+      Serial.print(thisIndex);
+      Serial.print(" ");
+    };
+    Serial.println("-----");
+
+    
     // int lastSplittedStringIndex = 0;
 
     // for (int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
