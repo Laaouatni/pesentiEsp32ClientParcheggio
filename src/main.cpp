@@ -40,8 +40,8 @@ void setup() {
     }
 
     for (int forSplittedIndex = 0; forSplittedIndex < dimiliterPositions.size(); forSplittedIndex++) {
-      const int thisDimiliterPosition = dimiliterPositions[forSplittedIndex];
-      const int nextDimiliterPosition = (forSplittedIndex + 1) < dimiliterPositions.size() ? dimiliterPositions[forSplittedIndex + 1] : wsValue.length();
+      const int thisDimiliterPosition = forSplittedIndex == 0 ? 0 : dimiliterPositions[forSplittedIndex]+1;
+      const int nextDimiliterPosition = forSplittedIndex == 0 ? dimiliterPositions[forSplittedIndex] : dimiliterPositions[forSplittedIndex+1];
       const String thisSplittedString = wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
       Serial.println("thisSplittedString: " + thisSplittedString);
       splittedStringValues.push_back(thisSplittedString);
