@@ -23,11 +23,13 @@ void setup() {
     if (thisWsReceivedStringData == "/") return;
     Serial.println(thisWsReceivedStringData);
 
-    // const String wsKey = thisWsReceivedStringData.substring(0, thisWsReceivedStringData.indexOf(":"));
-    // const String wsValue = thisWsReceivedStringData.substring(thisWsReceivedStringData.indexOf(":") + 1, thisWsReceivedStringData.length());
-    // Serial.println("------");
-    // Serial.println("wsKey: " + wsKey);
-    // Serial.println("wsValue: " + wsValue);
+
+
+    const String wsKey = thisWsReceivedStringData.substring(0, thisWsReceivedStringData.indexOf(":"));
+    const String wsValue = thisWsReceivedStringData.substring(thisWsReceivedStringData.indexOf(":")+1);
+    Serial.println("------");
+    Serial.println("wsKey: " + wsKey);
+    Serial.println("wsValue: " + wsValue);
 
     // std::vector<String> splittedStringValues;
     // int lastSplittedStringIndex = 0;
