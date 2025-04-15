@@ -29,6 +29,7 @@ void setup() {
 
     const char DELIMITER = ',';
     std::vector<int> dimiliterPositions;
+    std::vector<String> splittedStringValues;
 
     for(int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
       const char thisChar = wsValue[forCharIndex];
@@ -38,14 +39,14 @@ void setup() {
       dimiliterPositions.push_back(forCharIndex);
     }
 
-    Serial.println("----- positions -----");
-    for(int thisIndex : dimiliterPositions) {
-      Serial.print(thisIndex);
-      Serial.print(" ");
-    };
-    Serial.println("-----");
+    for (int forSplittedIndex = 0; forSplittedIndex < dimiliterPositions.size(); forSplittedIndex++) {
+      const int thisDimiliterPosition = dimiliterPositions[forSplittedIndex];
+      const int nextDimiliterPosition = (forSplittedIndex + 1) < dimiliterPositions.size() ? dimiliterPositions[forSplittedIndex + 1] : wsValue.length();
+      const String thisSplittedString = wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
+      Serial.println("thisSplittedString: " + thisSplittedString);
+      splittedStringValues.push_back(thisSplittedString);
+    }
 
-    
     // int lastSplittedStringIndex = 0;
 
     // for (int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
