@@ -2,13 +2,23 @@
 #include <WebSocketsClient.h>
 #include <WiFi.h>
 #include <vector>
+#include <LPD8806.h>
 
 const String WS_SERVER_URL = "pesentiws-43f6274c0f11.herokuapp.com";
 
 WebSocketsClient wsClient;
 
+const int nLEDs = 36;
+const int PIN_CLOCK = 6;
+const int PIN_DATA = 15;
+
+// LPD8806 strip = LPD8806(nLEDs, PIN_DATA, PIN_CLOCK);
+
+// std::vector<int> ledPositions = {35, 32, 30, 20, 17, 15, 6, 3, 0};
+
 void setup() {
   Serial.begin(115200);
+  strip.begin();
   Serial.println("Connecting to WiFi...");
   WiFi.begin("nomeWifi", "passwordWifi");
   while (WiFi.status() != WL_CONNECTED) {
@@ -47,23 +57,14 @@ void setup() {
       splittedStringValues.push_back(thisSplittedString);
     }
 
-    // int lastSplittedStringIndex = 0;
+    for (int ledIndex = 0; ledIndex < dimiliterPositions.size(); ledIndex++) {
+      const int thisLedPosition = ledPositions[ledIndex];
+      const int thisValue = splittedStringValues[ledIndex].toInt();
+      const int choosedColor = thisValue == 0 ? strip.Color(255, 0, 0) : strip.Color(0, 255, 0);
+      // strip.setPixelColor(thisLedPosition, choosedColor);
+    }
 
-    // for (int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
-    //   const char thisChar = wsValue[forCharIndex];
-    //   const bool canGoToNextSplittedString = thisChar == ',';
-
-    //   if(!canGoToNextSplittedString) {
-    //     splittedStringValues[splittedStringValues.size() - 1] += thisChar;
-    //     continue;
-    //   }
-    //   splittedStringValues.push_back("");
-    // }
-
-    // for(String thisSplittedString : splittedStringValues) {
-    //   Serial.print(thisSplittedString);
-    // };
-    // Serial.println("-----");
+    // strip.show();
   });
 }
 
