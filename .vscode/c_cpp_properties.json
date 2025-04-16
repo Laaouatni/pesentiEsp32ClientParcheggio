@@ -9,7 +9,7 @@
             "name": "PlatformIO",
             "includePath": [
                 "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/src",
-                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/LPD8806",
+                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/Adafruit NeoPixel",
                 "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/WebSockets/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
@@ -211,7 +211,6 @@
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/variants/esp32",
-                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/TimerOne",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
@@ -247,7 +246,7 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
                     "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/src",
-                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/LPD8806",
+                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/Adafruit NeoPixel",
                     "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/WebSockets/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
@@ -449,7 +448,6 @@
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/variants/esp32",
-                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/TimerOne",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
