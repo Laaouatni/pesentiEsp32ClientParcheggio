@@ -22,6 +22,8 @@ void setup() {
   while (WiFi.status() != WL_CONNECTED) {
   };
   Serial.println("WiFi connected! IP Address: " + WiFi.localIP().toString());
+  motoreEntrata.attach(pinMotoreEntrata);
+  motoreUscita.attach(pinMotoreUscita);
 
   wsClient.beginSSL(WS_SERVER_URL, 443, "/");
   wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
@@ -63,9 +65,6 @@ void setup() {
 
     // INIZIO LOGICA
 
-    motoreEntrata.attach(pinMotoreEntrata);
-    motoreUscita.attach(pinMotoreUscita);
-
     if (wsKey == "ingresso") {
       motoreEntrata.write(wsValue == "0" ? 0 : 90);
     }
@@ -73,10 +72,6 @@ void setup() {
     if (wsKey == "uscita") {
       motoreUscita.write(wsValue == "1" ? 0 : 90);
     }
-
-    delay(100);
-    motoreEntrata.detach();
-    motoreUscita.detach();
 
     // FINE LOGICA
   });
