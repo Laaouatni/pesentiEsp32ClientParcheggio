@@ -70,7 +70,7 @@ void setup() {
     }
 
     if (wsKey == "uscita") {
-      motoreUscita.write(wsValue == "0" ? 180 : 90);
+      motoreUscita.write(wsValue == "1" ? 180 : 90);
     }
 
     // FINE LOGICA
