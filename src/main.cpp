@@ -3,7 +3,7 @@
 #include <WiFi.h>
 #include <vector>
 // #include <Adafruit_NeoPixel.h>
-#include <Servo.h>
+#include <ESP32Servo.h>
 
 const String WS_SERVER_URL = "pesentiws-43f6274c0f11.herokuapp.com";
 

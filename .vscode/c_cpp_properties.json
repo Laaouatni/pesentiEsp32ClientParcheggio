@@ -9,7 +9,7 @@
             "name": "PlatformIO",
             "includePath": [
                 "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/src",
-                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/Servo/src",
+                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/ESP32Servo/src",
                 "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/WebSockets/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
@@ -246,7 +246,7 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
                     "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/src",
-                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/Servo/src",
+                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/ESP32Servo/src",
                     "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/WebSockets/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
