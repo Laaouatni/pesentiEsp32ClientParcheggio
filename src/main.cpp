@@ -2,11 +2,15 @@
 #include <WebSocketsClient.h>
 #include <WiFi.h>
 #include <vector>
-#include <Adafruit_NeoPixel.h>
+// #include <Adafruit_NeoPixel.h>
+#include <Servo.h>
 
 const String WS_SERVER_URL = "pesentiws-43f6274c0f11.herokuapp.com";
 
 WebSocketsClient wsClient;
+
+Servo motoreEntrata;
+Servo motoreUscita;
 
 void setup() {
   Serial.begin(115200);
@@ -24,7 +28,7 @@ void setup() {
 
     const String wsKey = thisWsReceivedStringData.substring(0, thisWsReceivedStringData.indexOf(":"));
     const String wsValue = thisWsReceivedStringData.substring(thisWsReceivedStringData.indexOf(":")+1);
-    Serial.println("wsKey: " + wsKey);
+    Serial.println("wsKey: " + wsKey + " wsValue: " + wsValue);
 
     const char DELIMITER = ',';
     std::vector<int> dimiliterPositions;
@@ -44,6 +48,11 @@ void setup() {
       const String thisSplittedString = wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
       splittedStringValues.push_back(thisSplittedString);
     }
+
+    // INIZIO LOGICA
+
+    // FINE LOGICA
+
   });
 }
 
