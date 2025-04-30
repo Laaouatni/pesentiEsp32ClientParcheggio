@@ -8,9 +8,9 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/src",
-                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/Adafruit NeoPixel",
-                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/WebSockets/src",
+                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/src",
+                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/Adafruit NeoPixel",
+                "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/WebSockets/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/Ethernet/src",
@@ -245,9 +245,9 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/src",
-                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/Adafruit NeoPixel",
-                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio/.pio/libdeps/esp32dev/WebSockets/src",
+                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/src",
+                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/Adafruit NeoPixel",
+                    "C:/Users/5AMIT/Downloads/pesentiEsp32ClientParcheggio-1/.pio/libdeps/esp32dev/WebSockets/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "C:/Users/5AMIT/.platformio/packages/framework-arduinoespressif32/libraries/Ethernet/src",

@@ -8,9 +8,8 @@ const String WS_SERVER_URL = "pesentiws-43f6274c0f11.herokuapp.com";
 
 WebSocketsClient wsClient;
 
-Adafruit_NeoPixel listaLeds = Adafruit_NeoPixel(60, 15, NEO_GRB);
-
-std::vector<int> ledPositions = {0,4,7,20,23,26,38,42,45};
+// Adafruit_NeoPixel listaLeds = Adafruit_NeoPixel(60, 15, NEO_GRB);
+// std::vector<int> ledPositions = {0,4,7,20,23,26,38,42,45};
 
 void setup() {
   Serial.begin(115200);
@@ -52,16 +51,16 @@ void setup() {
       splittedStringValues.push_back(thisSplittedString);
     }
 
-    for (int ledIndex = 0; ledIndex < dimiliterPositions.size(); ledIndex++) {
-      const int thisLedPosition = ledPositions[ledIndex];
-      const int thisValue = splittedStringValues[ledIndex].toInt();
-      const int choosedColor = thisValue == 1 ? listaLeds.Color(255, 0, 0) : listaLeds.Color(0, 255, 0);
-      listaLeds.setPixelColor(thisLedPosition, choosedColor);
+    // for (int ledIndex = 0; ledIndex < dimiliterPositions.size(); ledIndex++) {
+    //   const int thisLedPosition = ledPositions[ledIndex];
+    //   const int thisValue = splittedStringValues[ledIndex].toInt();
+    //   const int choosedColor = thisValue == 1 ? listaLeds.Color(255, 0, 0) : listaLeds.Color(0, 255, 0);
+    //   listaLeds.setPixelColor(thisLedPosition, choosedColor);
 
-      Serial.println("ledIndex: " + String(ledIndex) + " thisLedPosition: " + String(thisLedPosition) + " thisValue: " + String(thisValue) + " choosedColor: " + String(choosedColor) + " wsValue: " + wsValue);
-    }
+    //   Serial.println("ledIndex: " + String(ledIndex) + " thisLedPosition: " + String(thisLedPosition) + " thisValue: " + String(thisValue) + " choosedColor: " + String(choosedColor) + " wsValue: " + wsValue);
+    // }
 
-    listaLeds.show();
+    // listaLeds.show();
   });
 }
 
