@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <WebSocketsClient.h>
 #include <WiFi.h>
+
 #include <vector>
 // #include <Adafruit_NeoPixel.h>
 #include <ESP32Servo.h>
@@ -18,11 +19,9 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Connecting to WiFi...");
   WiFi.begin("nomeWifi", "passwordWifi");
-  while (WiFi.status() != WL_CONNECTED) {};
+  while (WiFi.status() != WL_CONNECTED) {
+  };
   Serial.println("WiFi connected! IP Address: " + WiFi.localIP().toString());
-
-  motoreEntrata.attach(pinMotoreEntrata);
-  motoreUscita.attach(pinMotoreUscita);
 
   wsClient.beginSSL(WS_SERVER_URL, 443, "/");
   wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
@@ -31,39 +30,55 @@ void setup() {
         String((char *)payload).substring(0, length);
     if (thisWsReceivedStringData == "/") return;
 
-    const String wsKey = thisWsReceivedStringData.substring(0, thisWsReceivedStringData.indexOf(":"));
-    const String wsValue = thisWsReceivedStringData.substring(thisWsReceivedStringData.indexOf(":")+1);
+    const String wsKey = thisWsReceivedStringData.substring(
+        0, thisWsReceivedStringData.indexOf(":"));
+    const String wsValue = thisWsReceivedStringData.substring(
+        thisWsReceivedStringData.indexOf(":") + 1);
     Serial.println("wsKey: " + wsKey + " wsValue: " + wsValue);
 
     const char DELIMITER = ',';
     std::vector<int> dimiliterPositions;
     std::vector<String> splittedStringValues;
 
-    for(int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
+    for (int forCharIndex = 0; forCharIndex < wsValue.length();
+         forCharIndex++) {
       const char thisChar = wsValue[forCharIndex];
       const bool canGoToNextSplittedString = thisChar == DELIMITER;
 
-      if(!canGoToNextSplittedString) continue;
+      if (!canGoToNextSplittedString) continue;
       dimiliterPositions.push_back(forCharIndex);
     }
 
-    for (int forSplittedIndex = 0; forSplittedIndex < dimiliterPositions.size(); forSplittedIndex++) {
-      const int thisDimiliterPosition = forSplittedIndex == 0 ? 0 : dimiliterPositions[forSplittedIndex]+1;
-      const int nextDimiliterPosition = forSplittedIndex == 0 ? dimiliterPositions[forSplittedIndex] : dimiliterPositions[forSplittedIndex+1];
-      const String thisSplittedString = wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
+    for (int forSplittedIndex = 0; forSplittedIndex < dimiliterPositions.size();
+         forSplittedIndex++) {
+      const int thisDimiliterPosition =
+          forSplittedIndex == 0 ? 0 : dimiliterPositions[forSplittedIndex] + 1;
+      const int nextDimiliterPosition =
+          forSplittedIndex == 0 ? dimiliterPositions[forSplittedIndex]
+                                : dimiliterPositions[forSplittedIndex + 1];
+      const String thisSplittedString =
+          wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
       splittedStringValues.push_back(thisSplittedString);
     }
 
     // INIZIO LOGICA
-    if(wsKey == "ingresso") {
-      motoreEntrata.write(wsValue == 0 ? 0 : 90);
+
+    motoreEntrata.attach(pinMotoreEntrata);
+    motoreUscita.attach(pinMotoreUscita);
+
+    if (wsKey == "ingresso") {
+      motoreEntrata.write(wsValue == "0" ? 0 : 90);
     }
 
-    if(wsKey == "uscita") {
-      motoreUscita.write(wsValue == 0 ? 0 : -90);
+    if (wsKey == "uscita") {
+      motoreUscita.write(wsValue == "1" ? 0 : 90);
     }
+
+    delay(100);
+    motoreEntrata.detach();
+    motoreUscita.detach();
+
     // FINE LOGICA
-
   });
 }
 
