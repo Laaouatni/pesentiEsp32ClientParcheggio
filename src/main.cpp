@@ -67,10 +67,14 @@ void setup() {
 
     if (wsKey == "ingresso") {
       motoreEntrata.write(wsValue == "0" ? 90 : 0);
+      delay(250);
+      motoreEntrata.detach();
     }
 
     if (wsKey == "uscita") {
       motoreUscita.write(wsValue == "1" ? 180 : 90);
+      delay(250);
+      motoreUscita.detach();
     }
 
     // FINE LOGICA
