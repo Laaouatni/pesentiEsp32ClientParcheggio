@@ -66,11 +66,11 @@ void setup() {
     // INIZIO LOGICA
 
     if (wsKey == "ingresso") {
-      motoreEntrata.write(wsValue == "0" ? 0 : 90);
+      motoreEntrata.write(wsValue == "0" ? 90 : 0);
     }
 
     if (wsKey == "uscita") {
-      motoreUscita.write(wsValue == "1" ? 0 : 90);
+      motoreUscita.write(wsValue == "1" ? 90 : 180);
     }
 
     // FINE LOGICA
