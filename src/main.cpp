@@ -8,12 +8,8 @@ const String WS_SERVER_URL = "pesentiws-43f6274c0f11.herokuapp.com";
 
 WebSocketsClient wsClient;
 
-// Adafruit_NeoPixel listaLeds = Adafruit_NeoPixel(60, 15, NEO_GRB);
-// std::vector<int> ledPositions = {0,4,7,20,23,26,38,42,45};
-
 void setup() {
   Serial.begin(115200);
-  listaLeds.begin();
   Serial.println("Connecting to WiFi...");
   WiFi.begin("nomeWifi", "passwordWifi");
   while (WiFi.status() != WL_CONNECTED) {};
@@ -29,7 +25,6 @@ void setup() {
     const String wsKey = thisWsReceivedStringData.substring(0, thisWsReceivedStringData.indexOf(":"));
     const String wsValue = thisWsReceivedStringData.substring(thisWsReceivedStringData.indexOf(":")+1);
     Serial.println("wsKey: " + wsKey);
-    // Serial.println("wsValue: " + wsValue);
 
     const char DELIMITER = ',';
     std::vector<int> dimiliterPositions;
@@ -47,20 +42,8 @@ void setup() {
       const int thisDimiliterPosition = forSplittedIndex == 0 ? 0 : dimiliterPositions[forSplittedIndex]+1;
       const int nextDimiliterPosition = forSplittedIndex == 0 ? dimiliterPositions[forSplittedIndex] : dimiliterPositions[forSplittedIndex+1];
       const String thisSplittedString = wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
-      // Serial.println("thisSplittedString: " + thisSplittedString);
       splittedStringValues.push_back(thisSplittedString);
     }
-
-    // for (int ledIndex = 0; ledIndex < dimiliterPositions.size(); ledIndex++) {
-    //   const int thisLedPosition = ledPositions[ledIndex];
-    //   const int thisValue = splittedStringValues[ledIndex].toInt();
-    //   const int choosedColor = thisValue == 1 ? listaLeds.Color(255, 0, 0) : listaLeds.Color(0, 255, 0);
-    //   listaLeds.setPixelColor(thisLedPosition, choosedColor);
-
-    //   Serial.println("ledIndex: " + String(ledIndex) + " thisLedPosition: " + String(thisLedPosition) + " thisValue: " + String(thisValue) + " choosedColor: " + String(choosedColor) + " wsValue: " + wsValue);
-    // }
-
-    // listaLeds.show();
   });
 }
 
