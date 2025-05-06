@@ -27,18 +27,20 @@ void wsCallbackReceive(String wsKey, String wsValue) {
 };
 
 void logicCancello(String wsKey, String wsValue) {
-  cancelloUscita.motore.attach(cancelloUscita.pin);
+  if (wsKey == "ingresso") {
+    int angolo = wsValue == "0" ? 90 : 0;
+    moveCancello(cancelloEntrata, angolo);
+  } 
   
-  if (wsKey == "ingresso") { 
-    cancelloEntrata.motore.attach(cancelloEntrata.pin);
-    cancelloEntrata.motore.write(wsValue == "0" ? 90 : 0);
-    delay(250);
-    cancelloEntrata.motore.detach();
+  if (wsKey == "uscita") {
+    int angolo = wsValue == "1" ? 180 : 90;
+    moveCancello(cancelloUscita, angolo);
   }
-  if (wsKey == "uscita") { 
-    cancelloUscita.motore.attach(cancelloUscita.pin);
-    cancelloUscita.motore.write(wsValue == "1" ? 180 : 90);
-    delay(250);
-    cancelloUscita.motore.detach();
-   }
+}
+
+void moveCancello(Cancello &cancello, int angolo) {
+  cancello.motore.attach(cancello.pin);
+  cancello.motore.write(angolo);
+  delay(250);
+  cancello.motore.detach();
 }
