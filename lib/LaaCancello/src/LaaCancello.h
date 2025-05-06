@@ -19,6 +19,7 @@ class LaaCancello {
     Cancello cancelloEntrata;
     Cancello cancelloUscita;
     void     laaMoveCancello(Cancello &cancello, int angolo);
+    void     laaSpegniMotore();
 };
 
 #endif

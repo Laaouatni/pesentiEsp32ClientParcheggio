@@ -4,26 +4,15 @@
 
 Ticker myDelay;
 
-struct Cancello {
-    int   pin;
-    Servo motore;
+void LaaCancello::laaSpegniMotore() {
+  cancello.motore.detach();
 };
-
-class LaaCancello {
-  public:
-    void laaLogicCancello(String wsKey, String wsValue);
-
-  private:
-    Cancello cancelloEntrata = {.pin = 15, .motore = Servo()};
-    Cancello cancelloUscita  = {.pin = 2, .motore = Servo()};
-    void     laaMoveCancello(Cancello &cancello, int angolo);
-}
 
 void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo) {
   cancello.motore.attach(cancello.pin);
   cancello.motore.write(angolo);
 
-  myDelay.once_ms(250, [&cancello]() { cancello.motore.detach(); })
+  myDelay.once_ms(250, LaaCancello::laaSpegniMotore);
 }
 
 void LaaCancello::laaLogicCancello(String wsKey, String wsValue) {

@@ -11,18 +11,8 @@ class LaaWifiWs {
               String wifiPassword = "passwordWifi") {
       laaConnectToWifi(wifiNome, wifiPassword);
       laaConnectToWs(wsServerUrl);
-    }
-
-  public:
-    void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
-    void laaLoop();
-
-  private:
-    WebSocketsClient wsClient;
-
-    void laaConnectToWifi(String wifiNome, String wifiPassword);
-    void laaConnectToWs(String wsServerUrl);
-};
+    };
+}
 
 void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
   Serial.println("Connecting to WiFi...");
