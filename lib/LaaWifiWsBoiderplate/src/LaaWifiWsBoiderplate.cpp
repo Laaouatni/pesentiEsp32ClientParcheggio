@@ -33,5 +33,5 @@ void LaaWifiWs::laaConnectToWs(String wsServerUrl) {
 }
 
 void LaaWifiWs::laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue)) {
-
+  
 }
