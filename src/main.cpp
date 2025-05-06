@@ -2,7 +2,7 @@
 #include "LaaCancello.h"
 #include <Arduino.h>
 
-LaaWifiWs laaWifi = LaaWifiWs("pesentiws-43f6274c0f11.herokuapp.com");
+LaaWifiWs laaWifi = LaaWifiWs(String("pesentiws-43f6274c0f11.herokuapp.com"));
 LaaCancello laaCancelli; //15,2
 
 void wsCallbackReceive(String wsKey, String wsValue) {
