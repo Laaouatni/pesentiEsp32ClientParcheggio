@@ -7,7 +7,7 @@
 
 class LaaWifiWs {
  public:
-  LaaWifiWs(String wsServerUrl, String wifiNome, String wifiPassword);
+  LaaWifiWs(String wsServerUrl, String wifiNome = "nomeWifi", String wifiPassword = "passwordWifi");
   void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
   void laaLoop();
 
