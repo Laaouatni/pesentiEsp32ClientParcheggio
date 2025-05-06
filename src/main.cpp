@@ -31,7 +31,7 @@ void logicCancello(String wsKey, String wsValue) {
     int angolo = wsValue == "0" ? 90 : 0;
     moveCancello(cancelloEntrata, angolo);
   } 
-  
+
   if (wsKey == "uscita") {
     int angolo = wsValue == "1" ? 180 : 90;
     moveCancello(cancelloUscita, angolo);
@@ -40,6 +40,7 @@ void logicCancello(String wsKey, String wsValue) {
 
 void moveCancello(Cancello &cancello, int angolo) {
   cancello.motore.attach(cancello.pin);
+  cancello.motore.attach_ms()
   cancello.motore.write(angolo);
   delay(250);
   cancello.motore.detach();
