@@ -13,12 +13,12 @@ struct Cancello {
 
 class LaaCancello {
   public:
-    void logicCancello(String wsKey, String wsValue);
+    void laaLogicCancello(String wsKey, String wsValue);
 
   private:
     Cancello cancelloEntrata;
     Cancello cancelloUscita;
-    void     moveCancello(Cancello &cancello, int angolo);
+    void     laaMoveCancello(Cancello &cancello, int angolo);
 };
 
 #endif

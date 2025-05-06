@@ -1,10 +1,9 @@
 #include "LaaWifiWsBoiderplate.h"
-
+#include "LaaCancello.h"
 #include <Arduino.h>
-#include <ESP32Servo.h>
-
 
 LaaWifiWs laaWifi = LaaWifiWs("pesentiws-43f6274c0f11.herokuapp.com");
+LaaCancello laaCancelli;
 
 void setup() {
   Serial.begin(115200);
@@ -16,7 +15,7 @@ void loop() {
 }
 
 void wsCallbackReceive(String wsKey, String wsValue) {
-  logicCancello(wsKey, wsValue);
+  laaCancelli.
 };
 
 void logicCancello(String wsKey, String wsValue) {
