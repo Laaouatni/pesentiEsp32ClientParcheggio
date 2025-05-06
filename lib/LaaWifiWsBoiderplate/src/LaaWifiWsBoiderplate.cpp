@@ -15,7 +15,8 @@ class LaaWifiWs {
 
  private:
   void laaConnectToWifi(String wifiNome, String wifiPassword);
-  void laaConncectToWs(String wsServerUrl);
+  void laaConnectToWs(String wsServerUrl);
+  void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
 };
 
 void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
@@ -26,7 +27,11 @@ void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
   Serial.println("WiFi connected! IP Address: " + WiFi.localIP().toString());
 }
 
-void LaaWifiWs::laaConncectToWs(String wsServerUrl) {
+void LaaWifiWs::laaConnectToWs(String wsServerUrl) {
   WebSocketsClient wsClient;
   wsClient.beginSSL(wsServerUrl, 443, "/");
+}
+
+void LaaWifiWs::laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue)) {
+
 }
