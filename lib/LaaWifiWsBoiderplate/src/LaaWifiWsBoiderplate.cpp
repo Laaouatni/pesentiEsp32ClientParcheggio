@@ -5,14 +5,11 @@
 #include <WebSocketsClient.h>
 #include <WiFi.h>
 
-class LaaWifiWs {
-  public:
-    LaaWifiWs(String wsServerUrl, String wifiNome = "nomeWifi",
-              String wifiPassword = "passwordWifi") {
-      laaConnectToWifi(wifiNome, wifiPassword);
-      laaConnectToWs(wsServerUrl);
-    };
-}
+LaaWifiWs::LaaWifiWs(String wsServerUrl, String wifiNome = "nomeWifi",
+                          String wifiPassword = "passwordWifi") {
+  laaConnectToWifi(wifiNome, wifiPassword);
+  laaConnectToWs(wsServerUrl);
+};
 
 void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
   Serial.println("Connecting to WiFi...");

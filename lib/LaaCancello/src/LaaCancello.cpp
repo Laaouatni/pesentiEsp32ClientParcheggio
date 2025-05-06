@@ -4,15 +4,19 @@
 
 Ticker myDelay;
 
+static Servo *servoToDetach = nullptr;
+
 void LaaCancello::laaSpegniMotore() {
-  cancello.motore.detach();
+  if (!servoToDetach) return;
+  servoToDetach->detach();
+  servoToDetach = nullptr;
 };
 
 void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo) {
   cancello.motore.attach(cancello.pin);
   cancello.motore.write(angolo);
-
-  myDelay.once_ms(250, LaaCancello::laaSpegniMotore);
+  servoToDetach = &cancello.motore;
+  myDelay.once_ms(250, &LaaCancello::laaSpegniMotore);
 }
 
 void LaaCancello::laaLogicCancello(String wsKey, String wsValue) {
