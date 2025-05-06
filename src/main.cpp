@@ -1,9 +1,5 @@
 #include <Arduino.h>
-// #include <Adafruit_NeoPixel.h>
 #include <ESP32Servo.h>
-
-const String WS_SERVER_URL = "pesentiws-43f6274c0f11.herokuapp.com";
-WebSocketsClient wsClient;
 
 Servo motoreEntrata;
 const int pinMotoreEntrata = 15;
@@ -13,7 +9,6 @@ const int pinMotoreUscita = 2;
 void setup() {
   Serial.begin(115200);
   
-  wsClient.beginSSL(WS_SERVER_URL, 443, "/");
   wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
     if (length == 0) return;
     const String thisWsReceivedStringData =
