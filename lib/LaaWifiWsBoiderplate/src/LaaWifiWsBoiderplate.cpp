@@ -15,16 +15,13 @@ class LaaWifiWs {
 
   public:
     void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
+    void laaLoop();
 
   private:
     WebSocketsClient wsClient;
 
     void laaConnectToWifi(String wifiNome, String wifiPassword);
     void laaConnectToWs(String wsServerUrl);
-};
-
-class LaaStringSplitter {
-  public:
 };
 
 void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
@@ -38,6 +35,10 @@ void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
 void LaaWifiWs::laaConnectToWs(String wsServerUrl) {
   wsClient.beginSSL(wsServerUrl, 443, "/");
 }
+
+void LaaWifiWs::laaLoop() {
+  wsClient.loop();
+};
 
 void LaaWifiWs::laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue)) {
   wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
