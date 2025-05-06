@@ -8,62 +8,6 @@ const int pinMotoreUscita = 2;
 
 void setup() {
   Serial.begin(115200);
-  
-  wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
-    if (length == 0) return;
-    const String thisWsReceivedStringData =
-        String((char *)payload).substring(0, length);
-    if (thisWsReceivedStringData == "/") return;
-
-    const String wsKey = thisWsReceivedStringData.substring(
-        0, thisWsReceivedStringData.indexOf(":"));
-    const String wsValue = thisWsReceivedStringData.substring(
-        thisWsReceivedStringData.indexOf(":") + 1);
-    Serial.println("wsKey: " + wsKey + " wsValue: " + wsValue);
-
-    const char DELIMITER = ',';
-    std::vector<int> dimiliterPositions;
-    std::vector<String> splittedStringValues;
-
-    for (int forCharIndex = 0; forCharIndex < wsValue.length();
-         forCharIndex++) {
-      const char thisChar = wsValue[forCharIndex];
-      const bool canGoToNextSplittedString = thisChar == DELIMITER;
-
-      if (!canGoToNextSplittedString) continue;
-      dimiliterPositions.push_back(forCharIndex);
-    }
-
-    for (int forSplittedIndex = 0; forSplittedIndex < dimiliterPositions.size();
-         forSplittedIndex++) {
-      const int thisDimiliterPosition =
-          forSplittedIndex == 0 ? 0 : dimiliterPositions[forSplittedIndex] + 1;
-      const int nextDimiliterPosition =
-          forSplittedIndex == 0 ? dimiliterPositions[forSplittedIndex]
-                                : dimiliterPositions[forSplittedIndex + 1];
-      const String thisSplittedString =
-          wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
-      splittedStringValues.push_back(thisSplittedString);
-    }
-
-    // INIZIO LOGICA
-    motoreEntrata.attach(pinMotoreEntrata);
-    motoreUscita.attach(pinMotoreUscita);
-
-    if (wsKey == "ingresso") {
-      motoreEntrata.write(wsValue == "0" ? 90 : 0);
-      delay(250);
-      motoreEntrata.detach();
-    }
-
-    if (wsKey == "uscita") {
-      motoreUscita.write(wsValue == "1" ? 180 : 90);
-      delay(250);
-      motoreUscita.detach();
-    }
-
-    // FINE LOGICA
-  });
 }
 
 void loop() { wsClient.loop(); }
