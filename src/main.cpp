@@ -3,7 +3,7 @@
 #include <Arduino.h>
 
 LaaWifiWs laaWifi = LaaWifiWs("pesentiws-43f6274c0f11.herokuapp.com");
-LaaCancello laaCancelli;
+LaaCancello laaCancelli; //15,2
 
 void setup() {
   Serial.begin(115200);
