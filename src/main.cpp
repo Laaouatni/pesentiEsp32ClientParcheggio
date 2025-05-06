@@ -7,7 +7,7 @@ LaaCancello laaCancelli;
 
 void setup() {
   Serial.begin(115200);
-  laaWifi.laaOnReceiveMessage(&wsCallbackReceive)
+  laaWifi.laaOnReceiveMessage(&wsCallbackReceive);
 }
 
 void loop() {
