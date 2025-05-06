@@ -1,13 +1,8 @@
 #include <Arduino.h>
-#include <WebSocketsClient.h>
-#include <WiFi.h>
-
-#include <vector>
 // #include <Adafruit_NeoPixel.h>
 #include <ESP32Servo.h>
 
 const String WS_SERVER_URL = "pesentiws-43f6274c0f11.herokuapp.com";
-
 WebSocketsClient wsClient;
 
 Servo motoreEntrata;
@@ -22,7 +17,6 @@ void setup() {
   while (WiFi.status() != WL_CONNECTED) {
   };
   Serial.println("WiFi connected! IP Address: " + WiFi.localIP().toString());
-
   wsClient.beginSSL(WS_SERVER_URL, 443, "/");
   wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
     if (length == 0) return;
