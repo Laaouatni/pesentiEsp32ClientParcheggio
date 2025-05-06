@@ -5,6 +5,10 @@
 LaaWifiWs laaWifi = LaaWifiWs("pesentiws-43f6274c0f11.herokuapp.com");
 LaaCancello laaCancelli; //15,2
 
+void wsCallbackReceive(String wsKey, String wsValue) {
+  laaCancelli.laaLogicCancello(wsKey, wsValue);
+};
+
 void setup() {
   Serial.begin(115200);
   laaWifi.laaOnReceiveMessage(&wsCallbackReceive);
@@ -13,7 +17,3 @@ void setup() {
 void loop() {
   laaWifi.laaLoop();
 }
-
-void wsCallbackReceive(String wsKey, String wsValue) {
-  laaCancelli.laaLogicCancello(wsKey, wsValue);
-};
