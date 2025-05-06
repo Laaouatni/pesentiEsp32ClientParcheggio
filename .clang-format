@@ -1,5 +1,4 @@
 ---
-
 Language: Cpp
 
 DisableFormat: false
@@ -28,12 +27,12 @@ SpaceBeforeInheritanceColon: true
 AllowShortLoopsOnASingleLine: true
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeCtorInitializerColon: true
-AllowShortCaseLabelsOnASingleLine: true 
+AllowShortCaseLabelsOnASingleLine: true
 SpaceBeforeRangeBasedForLoopColon: true
 
 SortIncludes: CaseInsensitive
 IncludeBlocks: Regroup
-AlignOperands: AlignAfterOperator 
+AlignOperands: AlignAfterOperator
 SpaceBeforeParens: Custom
 RemoveParentheses: MultipleParentheses
 IndentPPDirectives: AfterHash
@@ -43,8 +42,8 @@ SortUsingDeclarations: LexicographicNumeric
 SpaceAroundPointerQualifiers: After
 RequiresExpressionIndentation: Keyword
 EmptyLineBeforeAccessModifier: LogicalBlock
-AllowShortFunctionsOnASingleLine: Inline 
-AllowShortIfStatementsOnASingleLine: AllIfsAndElse 
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 
 AlignConsecutiveBitFields: Consecutive
 AlignConsecutiveAssignments: Consecutive
@@ -53,7 +52,7 @@ AlignConsecutiveDeclarations: Consecutive
 PointerAlignment: Right
 QualifierAlignment: Left
 ReferenceAlignment: Right
-AlignArrayOfStructures: Right 
+AlignArrayOfStructures: Right
 
 UseTab: Never
 SpacesInAngles: Never
@@ -69,10 +68,10 @@ MaxEmptyLinesToKeep: 1
 ContinuationIndentWidth: 2
 SpacesBeforeTrailingComments: 1
 
-ColumnLimit: 60
+ColumnLimit: 100
 
 SpaceBeforeParensOptions:
-  AfterPlacementOperator: false    
+  AfterPlacementOperator: false
   AfterFunctionDefinitionName: false
   AfterFunctionDeclarationName: false
   AfterControlStatements: true
@@ -95,13 +94,14 @@ BraceWrapping:
   AfterControlStatement: Never
 
 AlignConsecutiveShortCaseStatements:
-  Enabled: true 
-  AcrossComments: true 
-  AlignCaseColons: true 
-  AcrossEmptyLines: true 
+  Enabled: true
+  AcrossComments: true
+  AlignCaseColons: true
+  AcrossEmptyLines: true
 
-AlignTrailingComments: 
+AlignTrailingComments:
   Kind: Always
   OverEmptyLines: 2
 
 ---
+

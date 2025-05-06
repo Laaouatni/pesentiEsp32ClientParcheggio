@@ -1,22 +1,23 @@
 #include "LaaWifiWsBoiderplate.h"
 
 #include <Arduino.h>
+#include <vector>
 #include <WebSocketsClient.h>
 #include <WiFi.h>
 
-#include <vector>
-
 class LaaWifiWs {
- public:
-  LaaWifiWs(String wsServerUrl, String wifiNome = "nomeWifi",
-            String wifiPassword = "passwordWifi") {
-    laaConnectToWifi(wifiNome, wifiPassword);
-  }
+  public:
+    LaaWifiWs(String wsServerUrl, String wifiNome = "nomeWifi",
+              String wifiPassword = "passwordWifi") {
+      laaConnectToWifi(wifiNome, wifiPassword);
+      laaConnectToWs(wsServerUrl);
+    }
 
- private:
-  void laaConnectToWifi(String wifiNome, String wifiPassword);
-  void laaConnectToWs(String wsServerUrl);
-  void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
+  private:
+    WebSocketsClient wsClient;
+    void             laaConnectToWifi(String wifiNome, String wifiPassword);
+    void             laaConnectToWs(String wsServerUrl);
+    void             laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
 };
 
 void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
@@ -28,10 +29,47 @@ void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
 }
 
 void LaaWifiWs::laaConnectToWs(String wsServerUrl) {
-  WebSocketsClient wsClient;
   wsClient.beginSSL(wsServerUrl, 443, "/");
 }
 
 void LaaWifiWs::laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue)) {
-  
+  wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
+    if (length == 0) { return; }
+    const String thisWsReceivedStringData = String((char *) payload).substring(0, length);
+    if (thisWsReceivedStringData == "/") { return; }
+
+    const String wsKey =
+      thisWsReceivedStringData.substring(0, thisWsReceivedStringData.indexOf(":"));
+    const String wsValue =
+      thisWsReceivedStringData.substring(thisWsReceivedStringData.indexOf(":") + 1);
+    Serial.println("wsKey: " + wsKey + " wsValue: " + wsValue);
+
+    const char          DELIMITER = ',';
+    std::vector<int>    dimiliterPositions;
+    std::vector<String> splittedStringValues;
+
+    for (int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
+      const char thisChar                  = wsValue[forCharIndex];
+      const bool canGoToNextSplittedString = thisChar == DELIMITER;
+
+      if (!canGoToNextSplittedString) { continue; }
+      dimiliterPositions.push_back(forCharIndex);
+    }
+
+    for (int forSplittedIndex = 0; forSplittedIndex < dimiliterPositions.size();
+         forSplittedIndex++) {
+      const int thisDimiliterPosition =
+        forSplittedIndex == 0 ? 0 : dimiliterPositions[forSplittedIndex] + 1;
+      const int    nextDimiliterPosition = forSplittedIndex == 0
+                                           ? dimiliterPositions[forSplittedIndex]
+                                           : dimiliterPositions[forSplittedIndex + 1];
+      const String thisSplittedString =
+        wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
+      splittedStringValues.push_back(thisSplittedString);
+    }
+
+    myCallback(wsKey, wsValue);
+
+    // FINE LOGICA
+  });
 }
