@@ -6,7 +6,10 @@
 
 class LaaWifi {
  public:
-  LaaWifi(String wsServerUrl) { laaConnectToWifi(); }
+  LaaWifi(String wsServerUrl, String wifiNome = "nomeWifi",
+          String wifiPassword = "passwordWifi") {
+    laaConnectToWifi();
+  }
 
  private:
   void laaConnectToWifi();
@@ -14,7 +17,7 @@ class LaaWifi {
 
 // laaConnectToWifi function definition
 void LaaWifi::laaConnectToWifi() {
-  const String NOME_WIFI = "nomeWifi";
+  const String NOME_WIFI = ;
   const String PASSWORD_WIFI = "passwordWifi";
 
   Serial.println("Connecting to WiFi...");
