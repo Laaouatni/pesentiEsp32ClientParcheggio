@@ -2,7 +2,7 @@
 #include <ESP32Servo.h>
 #include "LaaWifiWsBoiderplate.h"
 
-LaaWifiWs laaWifi = LaaWifiWs("pesentiws-43f6274c0f11.herokuapp.com");
+LaaWifiWs laaWifi;
 
 Servo motoreEntrata;
 const int pinMotoreEntrata = 15;
@@ -11,7 +11,7 @@ const int pinMotoreUscita = 2;
 
 void setup() {
   Serial.begin(115200);
-
+  laaWifi = LaaWifiWs("pesentiws-43f6274c0f11.herokuapp.com")
 }
 
 void loop() {
