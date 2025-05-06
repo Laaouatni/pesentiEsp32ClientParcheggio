@@ -15,7 +15,7 @@ void loop() {
 }
 
 void wsCallbackReceive(String wsKey, String wsValue) {
-  laaCancelli.
+  laaCancelli.laaLogicCancello();
 };
 
 void logicCancello(String wsKey, String wsValue) {
