@@ -1,28 +1,28 @@
+#include "LaaWifiWsBoiderplate.h"
+
 #include <Arduino.h>
 #include <WebSocketsClient.h>
 #include <WiFi.h>
 
 #include <vector>
 
-class LaaWifi {
+class LaaWifiWs {
  public:
-  LaaWifi(String wsServerUrl, String wifiNome = "nomeWifi",
-          String wifiPassword = "passwordWifi") {
-    laaConnectToWifi();
+  LaaWifiWs(String wsServerUrl, 
+            String wifiNome = "nomeWifi",
+            String wifiPassword = "passwordWifi") {
+    laaConnectToWifi(wifiNome, wifiPassword);
   }
 
  private:
-  void laaConnectToWifi();
+  void laaConnectToWifi(String wifiNome, String wifiPassword);
 };
 
 // laaConnectToWifi function definition
-void LaaWifi::laaConnectToWifi() {
-  const String NOME_WIFI = ;
-  const String PASSWORD_WIFI = "passwordWifi";
-
+void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
   Serial.println("Connecting to WiFi...");
 
-  WiFi.begin(NOME_WIFI, PASSWORD_WIFI);
+  WiFi.begin(wifiNome, wifiPassword);
   while (WiFi.status() != WL_CONNECTED);
   Serial.println("WiFi connected! IP Address: " + WiFi.localIP().toString());
 }
