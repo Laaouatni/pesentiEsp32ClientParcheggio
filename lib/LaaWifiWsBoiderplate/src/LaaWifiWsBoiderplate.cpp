@@ -41,7 +41,7 @@ void LaaWifiWs::laaLoop() {
 };
 
 void LaaWifiWs::laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue)) {
-  wsClient.onEvent([](WStype_t type, uint8_t *payload, size_t length) {
+  wsClient.onEvent([myCallback](WStype_t type, uint8_t *payload, size_t length) {
     if (length == 0) { return; }
 
     const String thisWsReceivedStringData = String((char *) payload).substring(0, length);

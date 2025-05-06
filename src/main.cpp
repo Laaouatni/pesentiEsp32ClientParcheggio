@@ -2,8 +2,10 @@
 
 #include <Arduino.h>
 #include <ESP32Servo.h>
+#include <Ticker.h>
 
 LaaWifiWs laaWifi = LaaWifiWs("pesentiws-43f6274c0f11.herokuapp.com");
+Ticker    myDelay;
 
 struct Cancello {
     int   pin;
@@ -30,7 +32,7 @@ void logicCancello(String wsKey, String wsValue) {
   if (wsKey == "ingresso") {
     int angolo = wsValue == "0" ? 90 : 0;
     moveCancello(cancelloEntrata, angolo);
-  } 
+  }
 
   if (wsKey == "uscita") {
     int angolo = wsValue == "1" ? 180 : 90;
@@ -40,8 +42,7 @@ void logicCancello(String wsKey, String wsValue) {
 
 void moveCancello(Cancello &cancello, int angolo) {
   cancello.motore.attach(cancello.pin);
-  cancello.motore.attach_ms()
   cancello.motore.write(angolo);
-  delay(250);
-  cancello.motore.detach();
+
+  myDelay.once_ms(250, [&cancello]() { cancello.motore.detach(); })
 }
