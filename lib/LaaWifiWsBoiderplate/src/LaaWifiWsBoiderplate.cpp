@@ -23,6 +23,10 @@ class LaaWifiWs {
     void laaConnectToWs(String wsServerUrl);
 };
 
+class LaaStringSplitter {
+  public:
+};
+
 void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
   Serial.println("Connecting to WiFi...");
 
