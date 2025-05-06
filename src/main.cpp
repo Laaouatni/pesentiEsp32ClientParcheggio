@@ -2,18 +2,9 @@
 
 #include <Arduino.h>
 #include <ESP32Servo.h>
-#include <Ticker.h>
+
 
 LaaWifiWs laaWifi = LaaWifiWs("pesentiws-43f6274c0f11.herokuapp.com");
-Ticker    myDelay;
-
-struct Cancello {
-    int   pin;
-    Servo motore;
-};
-
-Cancello cancelloEntrata = {.pin = 15, .motore = Servo()};
-Cancello cancelloUscita  = {.pin = 2, .motore = Servo()};
 
 void setup() {
   Serial.begin(115200);
