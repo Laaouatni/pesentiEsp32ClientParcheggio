@@ -5,6 +5,7 @@
 #include <WebSocketsClient.h>
 #include <WiFi.h>
 
+
 LaaWifiWs::LaaWifiWs(String wsServerUrl, String wifiNome, String wifiPassword) {
   laaConnectToWifi(wifiNome, wifiPassword);
   laaConnectToWs(wsServerUrl);
