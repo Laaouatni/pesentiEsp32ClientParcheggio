@@ -2,14 +2,23 @@
 
 class LaaListaLed {
   public:
-    LaaListaLed(int pin) { _pin = pin; };
+    LaaListaLed(int pin) {
+      thisLista = Adafruit_NeoPixel(60, pin);
+      thisLista.begin();
+      thisLista.setBrightness(50);
+    };
+
     void laaColorDisponibilitaParcheggio(String wsKey, String wsValue) {
       bool canRun = wsKey == "cameraInput";
-      if (!canRun) return;
+      if (!canRun) { return; }
       std::vector wsValueArray = LaaWifiWs::splitStringIntoVectorStringArray(wsValue);
-      
+      for (int i = 0; i < wsValueArray.size(); i++) {
+        thisLista.setPixelColor(i, wsValueArray[i] == "0" ? thisLista.Color(0, 0, 255)
+                                                          : thisLista.Color(255, 0, 0));
+      }
+      thisLista.show();
     }
 
   private:
-    int _pin;
+    Adafruit_NeoPixel thisLista;
 };
