@@ -4,11 +4,12 @@
 #include <Arduino.h>
 
 LaaWifiWs laaWifi;
-
 LaaCancello laaCancelli(15, 2);
+LaaListaLed laaListaLed(4);
 
 void wsCallbackReceive(String wsKey, String wsValue) {
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
+  laaListaLed.laaColorDisponibilitaParcheggio(wsKey, wsValue);
 };
 
 void setup() {
