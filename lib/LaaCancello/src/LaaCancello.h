@@ -13,7 +13,8 @@ struct Cancello {
 
 class LaaCancello {
   public:
-    void laaLogicCancello(String wsKey, String wsValue);
+    LaaCancello(int pinEntrata, int pinUscita);
+    void laaConnectToAppTelecomando(String wsKey, String wsValue);
 
   private:
     Cancello cancelloEntrata;

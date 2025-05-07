@@ -3,10 +3,11 @@
 #include <Arduino.h>
 
 LaaWifiWs laaWifi = LaaWifiWs(String("pesentiws-43f6274c0f11.herokuapp.com"));
-LaaCancello laaCancelli; //15,2
+LaaCancello laaCancelli(15,2);
 
 void wsCallbackReceive(String wsKey, String wsValue) {
-  laaCancelli.laaLogicCancello(wsKey, wsValue);
+  laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
+  
 };
 
 void setup() {

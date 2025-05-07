@@ -6,6 +6,11 @@ Ticker myDelay;
 
 static Servo *servoToDetach = nullptr;
 
+LaaCancello::LaaCancello(int pinEntrata, int pinUscita) {
+  cancelloEntrata = {pinEntrata, Servo()};
+  cancelloUscita = {pinUscita, Servo()};
+};
+
 void LaaCancello::laaSpegniMotore() {
   if (!servoToDetach) return;
   servoToDetach->detach();
@@ -19,7 +24,7 @@ void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo) {
   myDelay.once_ms(250, &LaaCancello::laaSpegniMotore);
 }
 
-void LaaCancello::laaLogicCancello(String wsKey, String wsValue) {
+void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
   if (wsKey == "ingresso") {
     int angolo = wsValue == "0" ? 90 : 0;
     laaMoveCancello(cancelloEntrata, angolo);
