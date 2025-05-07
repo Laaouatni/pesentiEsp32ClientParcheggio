@@ -13,6 +13,7 @@ LaaWifiWs::LaaWifiWs(String wsServerUrl, String wifiNome, String wifiPassword) {
 
 void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
   Serial.println("Connecting to WiFi...");
+  Serial.println(String(wifiNome) + " " + String(wifiPassword));
 
   WiFi.begin(wifiNome, wifiPassword);
   while (WiFi.status() != WL_CONNECTED) {};
