@@ -30,6 +30,33 @@ void LaaWifiWs::laaLoop() {
   wsClient.loop();
 };
 
+std::vector LaaWifiWs::splitStringIntoVectorStringArray(String wsValue) {
+  std::vector<int>    dimiliterPositions;
+  std::vector<String> splittedStringValues;
+  const char          DELIMITER = ',';
+
+  for (int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
+    const char thisChar                  = wsValue[forCharIndex];
+    const bool canGoToNextSplittedString = thisChar == DELIMITER;
+    if (!canGoToNextSplittedString) { continue; }
+    dimiliterPositions.push_back(forCharIndex);
+  }
+
+  for (int forSplittedIndex = 0; forSplittedIndex < dimiliterPositions.size(); forSplittedIndex++) {
+    const int thisDimiliterPosition =
+      forSplittedIndex == 0 ? 0 : dimiliterPositions[forSplittedIndex] + 1;
+    const int nextDimiliterPosition = forSplittedIndex == 0
+                                      ? dimiliterPositions[forSplittedIndex]
+                                      : dimiliterPositions[forSplittedIndex + 1];
+
+    const String thisSplittedString =
+      wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
+    splittedStringValues.push_back(thisSplittedString);
+  }
+
+  return splittedStringValues;
+};
+
 void LaaWifiWs::laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue)) {
   wsClient.onEvent([myCallback](WStype_t type, uint8_t *payload, size_t length) {
     if (length == 0) { return; }
@@ -41,31 +68,6 @@ void LaaWifiWs::laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsVa
       thisWsReceivedStringData.substring(0, thisWsReceivedStringData.indexOf(":"));
     const String wsValue =
       thisWsReceivedStringData.substring(thisWsReceivedStringData.indexOf(":") + 1);
-
-    std::vector<int>    dimiliterPositions;
-    std::vector<String> splittedStringValues;
-    const char          DELIMITER = ',';
-
-    for (int forCharIndex = 0; forCharIndex < wsValue.length(); forCharIndex++) {
-      const char thisChar                  = wsValue[forCharIndex];
-      const bool canGoToNextSplittedString = thisChar == DELIMITER;
-      if (!canGoToNextSplittedString) { continue; }
-
-      dimiliterPositions.push_back(forCharIndex);
-    }
-
-    for (int forSplittedIndex = 0; forSplittedIndex < dimiliterPositions.size();
-         forSplittedIndex++) {
-      const int thisDimiliterPosition =
-        forSplittedIndex == 0 ? 0 : dimiliterPositions[forSplittedIndex] + 1;
-      const int nextDimiliterPosition = forSplittedIndex == 0
-                                        ? dimiliterPositions[forSplittedIndex]
-                                        : dimiliterPositions[forSplittedIndex + 1];
-
-      const String thisSplittedString =
-        wsValue.substring(thisDimiliterPosition, nextDimiliterPosition);
-      splittedStringValues.push_back(thisSplittedString);
-    }
 
     myCallback(wsKey, wsValue);
   });
