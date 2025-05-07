@@ -11,13 +11,10 @@ class LaaWifiWs {
     void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
     void laaSetup(String wsServerUrl, String wifiNome, String wifiPassword);
     void laaLoop();
+    std::vector LaaWifiWs::splitStringIntoVectorStringArray(String wsValue);
 
   private:
     WebSocketsClient wsClient;
-
-    // String _wifiNome;
-    // String _wifiPassword;
-
     void laaConnectToWifi(String wifiNome, String wifiPassword);
     void laaConnectToWs(String wsServerUrl);
 };

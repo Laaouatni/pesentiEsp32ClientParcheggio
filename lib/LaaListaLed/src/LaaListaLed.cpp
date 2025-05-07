@@ -6,8 +6,8 @@ class LaaListaLed {
     void laaColorDisponibilitaParcheggio(String wsKey, String wsValue) {
       bool canRun = wsKey == "cameraInput";
       if (!canRun) return;
+      std::vector wsValueArray = LaaWifiWs::splitStringIntoVectorStringArray(wsValue);
       
-
     }
 
   private:
