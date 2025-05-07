@@ -5,8 +5,8 @@
 #include <WebSocketsClient.h>
 #include <WiFi.h>
 
-
 LaaWifiWs::LaaWifiWs(String wsServerUrl, String wifiNome, String wifiPassword) {
+  Serial.begin(115200);
   laaConnectToWifi(wifiNome, wifiPassword);
   laaConnectToWs(wsServerUrl);
 };
@@ -15,7 +15,7 @@ void LaaWifiWs::laaConnectToWifi(String wifiNome, String wifiPassword) {
   Serial.println("Connecting to WiFi...");
 
   WiFi.begin(wifiNome, wifiPassword);
-  while (WiFi.status() != WL_CONNECTED);
+  while (WiFi.status() != WL_CONNECTED) {};
   Serial.println("WiFi connected! IP Address: " + WiFi.localIP().toString());
 }
 

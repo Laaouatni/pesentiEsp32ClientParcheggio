@@ -6,15 +6,21 @@
 #include <WiFi.h>
 
 class LaaWifiWs {
- public:
-  LaaWifiWs(String wsServerUrl, String wifiNome = "nomeWifi", String wifiPassword = "passwordWifi");
-  void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
-  void laaLoop();
+  public:
+    LaaWifiWs(String wsServerUrl, String wifiNome = "nomeWifi",
+              String wifiPassword = "passwordWifi");
+    void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
+    // void laaSetup();
+    void laaLoop();
 
- private:
-  WebSocketsClient wsClient;
-  void laaConnectToWifi(String wifiNome, String wifiPassword);
-  void laaConnectToWs(String wsServerUrl);
+  private:
+    WebSocketsClient wsClient;
+
+    // String _wifiNome;
+    // String _wifiPassword;
+
+    void laaConnectToWifi(String wifiNome, String wifiPassword);
+    void laaConnectToWs(String wsServerUrl);
 };
 
 #endif
