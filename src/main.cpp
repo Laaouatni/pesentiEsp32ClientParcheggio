@@ -7,7 +7,6 @@ LaaCancello laaCancelli(15,2);
 
 void wsCallbackReceive(String wsKey, String wsValue) {
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
-  
 };
 
 void setup() {

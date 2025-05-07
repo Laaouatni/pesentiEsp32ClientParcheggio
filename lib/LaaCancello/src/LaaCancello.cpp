@@ -3,6 +3,7 @@
 #include <ESP32Servo.h>
 
 Ticker myDelay;
+static Servo *servoToDetach = nullptr;
 
 LaaCancello::LaaCancello(int pinEntrata, int pinUscita) {
   cancelloEntrata = {pinEntrata, Servo()};
@@ -29,7 +30,6 @@ void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
   }
 }
 
-static Servo *servoToDetach = nullptr;
 
 void LaaCancello::laaSpegniMotore() {
   if (!servoToDetach) return;

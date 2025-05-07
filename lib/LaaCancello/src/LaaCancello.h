@@ -5,7 +5,6 @@
 #include <ESP32Servo.h>
 
 extern Ticker myDelay;
-extern static Servo *servoToDetach;
 
 struct Cancello {
     int   pin;
