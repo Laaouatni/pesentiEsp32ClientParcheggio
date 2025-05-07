@@ -1,20 +1,19 @@
-#include "LaaWifiWsBoiderplate.h"
 #include "LaaCancello.h"
+#include "LaaWifiWsBoiderplate.h"
+
 #include <Arduino.h>
 
-LaaWifiWs laaWifi = LaaWifiWs(
-  String("pesentiws-43f6274c0f11.herokuapp.com"), 
-  String("nomeWifi"), 
-  String("passwordWifi")
-);
+LaaWifiWs laaWifi;
 
-LaaCancello laaCancelli(15,2);
+LaaCancello laaCancelli(15, 2);
 
 void wsCallbackReceive(String wsKey, String wsValue) {
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
 };
 
 void setup() {
+  laaWifi.laaSetup(String("pesentiws-43f6274c0f11.herokuapp.com"), String("nomeWifi"),
+                   String("passwordWifi"));
   laaWifi.laaOnReceiveMessage(&wsCallbackReceive);
 }
 

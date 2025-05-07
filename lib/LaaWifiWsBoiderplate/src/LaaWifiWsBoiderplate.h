@@ -7,9 +7,9 @@
 
 class LaaWifiWs {
   public:
-    LaaWifiWs(String wsServerUrl, String wifiNome, String wifiPassword);
+    LaaWifiWs();
     void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
-    // void laaSetup();
+    void laaSetup(String wsServerUrl, String wifiNome, String wifiPassword);
     void laaLoop();
 
   private:
