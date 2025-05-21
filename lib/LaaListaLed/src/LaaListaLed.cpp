@@ -13,12 +13,13 @@ class LaaListaLed {
       if (!canRun) { return; }
       std::vector wsValueArray = LaaWifiWs::splitStringIntoVectorStringArray(wsValue);
       for (int i = 0; i < wsValueArray.size(); i++) {
-        thisLista.setPixelColor(i, wsValueArray[i] == "0" ? thisLista.Color(0, 0, 255)
-                                                          : thisLista.Color(255, 0, 0));
+        thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
       }
       thisLista.show();
     }
 
   private:
     Adafruit_NeoPixel thisLista;
+    const int         COLOR_RED   = thisLista.Color(255, 0, 0);
+    const int         COLOR_GREEN = thisLista.Color(0, 255, 0);
 };
