@@ -9,8 +9,6 @@
 class LaaListaLed {
   private:
     Adafruit_NeoPixel thisLista;
-    int               COLOR_RED;
-    int               COLOR_GREEN;
 
   public:
     LaaListaLed(int pin);
