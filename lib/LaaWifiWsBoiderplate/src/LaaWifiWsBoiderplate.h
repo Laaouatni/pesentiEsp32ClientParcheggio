@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <WebSocketsClient.h>
 #include <WiFi.h>
+#include <vector>
 
 class LaaWifiWs {
   public:
@@ -11,7 +12,7 @@ class LaaWifiWs {
     void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
     void laaSetup(String wsServerUrl, String wifiNome, String wifiPassword);
     void laaLoop();
-    std::vector LaaWifiWs::splitStringIntoVectorStringArray(String wsValue);
+    std::vector<String> splitStringIntoVectorStringArray(String wsValue);
 
   private:
     WebSocketsClient wsClient;

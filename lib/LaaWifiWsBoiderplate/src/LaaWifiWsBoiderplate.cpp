@@ -30,7 +30,7 @@ void LaaWifiWs::laaLoop() {
   wsClient.loop();
 };
 
-std::vector LaaWifiWs::splitStringIntoVectorStringArray(String wsValue) {
+std::vector<String> LaaWifiWs::splitStringIntoVectorStringArray(String wsValue) {
   std::vector<int>    dimiliterPositions;
   std::vector<String> splittedStringValues;
   const char          DELIMITER = ',';
