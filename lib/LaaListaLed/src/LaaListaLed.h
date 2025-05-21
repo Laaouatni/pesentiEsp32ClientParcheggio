@@ -4,6 +4,7 @@
 #include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
 #include <vector>
+#include "LaaWifiWsBoiderplate.h"
 
 class LaaListaLed {
   public:
