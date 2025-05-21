@@ -1,6 +1,12 @@
 #include <Adafruit_NeoPixel.h>
 #include <vector>
 #include "LaaWifiWsBoiderplate.h"
+#include "LaaListaLed.h"
+#include <Arduino.h>
+
+
+
+
 
 LaaListaLed::LaaListaLed(int pin) {
   thisLista = Adafruit_NeoPixel(60, pin);
@@ -8,7 +14,7 @@ LaaListaLed::LaaListaLed(int pin) {
   thisLista.setBrightness(50);
 }
 
-void laaListaLed::laaColorDisponibilitaParcheggio(String wsKey, String wsValue) {
+void LaaListaLed::laaColorDisponibilitaParcheggio(String wsKey, String wsValue) {
   bool canRun = wsKey == "cameraInput";
   if (!canRun) { return; }
   LaaWifiWs           thisWifiClass = LaaWifiWs();

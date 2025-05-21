@@ -7,14 +7,13 @@
 #include "LaaWifiWsBoiderplate.h"
 
 class LaaListaLed {
+  private:
+    Adafruit_NeoPixel thisLista;
+    const int         COLOR_RED = thisLista.Color(255,0,0);
+    const int         COLOR_GREEN = thisLista.Color(0,255,0);
   public:
     LaaListaLed(int pin);
     void laaColorDisponibilitaParcheggio(String wsKey, String wsValue);
-
-  private:
-    Adafruit_NeoPixel thisLista;
-    const int         COLOR_RED;
-    const int         COLOR_GREEN;
 };
 
 #endif // LAALISTALED_H
