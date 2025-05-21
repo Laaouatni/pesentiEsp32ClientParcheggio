@@ -1,15 +1,15 @@
-#include <Adafruit_NeoPixel.h>
-#include <vector>
-#include "LaaWifiWsBoiderplate.h"
 #include "LaaListaLed.h"
+
+#include "LaaWifiWsBoiderplate.h"
+
+#include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
-
-
-
-
+#include <vector>
 
 LaaListaLed::LaaListaLed(int pin) {
-  thisLista = Adafruit_NeoPixel(60, pin);
+  COLOR_RED   = thisLista.Color(255, 0, 0);
+  COLOR_GREEN = thisLista.Color(0, 255, 0);
+  thisLista   = Adafruit_NeoPixel(60, pin);
   thisLista.begin();
   thisLista.setBrightness(10);
 }
@@ -17,7 +17,7 @@ LaaListaLed::LaaListaLed(int pin) {
 void LaaListaLed::laaColorDisponibilitaParcheggio(String wsKey, String wsValue) {
   bool canRun = wsKey == "cameraInput";
   if (!canRun) { return; }
-  LaaWifiWs           thisWifiClass = LaaWifiWs();
+  LaaWifiWs                  thisWifiClass = LaaWifiWs();
   static std::vector<String> wsValueArray = thisWifiClass.splitStringIntoVectorStringArray(wsValue);
   for (int i = 0; i < wsValueArray.size(); i++) {
     Serial.println(String(i) + "\t" + wsValueArray[i] + "\t");

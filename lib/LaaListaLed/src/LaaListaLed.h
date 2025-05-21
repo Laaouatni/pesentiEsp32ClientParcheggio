@@ -9,8 +9,9 @@
 class LaaListaLed {
   private:
     Adafruit_NeoPixel thisLista;
-    const int         COLOR_RED = thisLista.Color(255,0,0);
-    const int         COLOR_GREEN = thisLista.Color(0,255,0);
+    int               COLOR_RED;
+    int               COLOR_GREEN;
+
   public:
     LaaListaLed(int pin);
     void laaColorDisponibilitaParcheggio(String wsKey, String wsValue);
