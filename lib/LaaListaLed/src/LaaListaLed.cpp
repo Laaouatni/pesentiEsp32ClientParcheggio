@@ -13,7 +13,7 @@ class LaaListaLed {
     void laaColorDisponibilitaParcheggio(String wsKey, String wsValue) {
       bool canRun = wsKey == "cameraInput";
       if (!canRun) { return; }
-      std::vector wsValueArray = LaaWifiWs::splitStringIntoVectorStringArray(wsValue);
+      std::vector<String> wsValueArray = LaaWifiWs::splitStringIntoVectorStringArray(wsValue);
       for (int i = 0; i < wsValueArray.size(); i++) {
         thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
       }
