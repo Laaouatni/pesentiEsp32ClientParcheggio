@@ -19,7 +19,6 @@ void wsCallbackReceive(String wsKey, String wsValue) {
   bool canRun = wsKey == "cameraInput";
   if (!canRun) { return; }
   std::vector<String> wsValueArray = laaWifi.splitStringIntoVectorStringArray(wsValue);
-  Serial.println("wsValueArray.size() " + String(wsValueArray.size()));
   for (int i = 0; i <= wsValueArray.size(); i++) {
     thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
   }
