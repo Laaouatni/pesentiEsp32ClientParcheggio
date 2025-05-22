@@ -1,16 +1,35 @@
 #include "LaaCancello.h"
 #include "LaaWifiWsBoiderplate.h"
-#include "LaaListaLed.h"
+// #include "LaaListaLed.h"
 
 #include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+#include <vector>
 
 LaaWifiWs laaWifi;
 LaaCancello laaCancelli(15, 2);
-// LaaListaLed laaListaLed(4);
+Adafruit_NeoPixel thisLista(60, 4);
+
+const int COLOR_RED   = thisLista.Color(255, 0, 0);
+const int COLOR_GREEN = thisLista.Color(0, 255, 0);
 
 void wsCallbackReceive(String wsKey, String wsValue) {
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
-  // laaListaLed.laaColorDisponibilitaParcheggio(wsKey, wsValue);
+  
+  thisLista.begin();
+  thisLista.setBrightness(10);
+  thisLista.fill(0);
+  thisLista.show();
+
+  bool canRun = wsKey == "cameraInput";
+  if (!canRun) { return; }
+  std::vector<String> wsValueArray = laaWifi.splitStringIntoVectorStringArray(wsValue);
+  for (int i = 0; i < wsValueArray.size(); i++) {
+    Serial.print(wsValueArray[i] + " " + wsValueArray[i] == "0" ? "✅" : "❌");
+    thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
+  }
+  Serial.println("");
+  thisLista.show();
 };
 
 void setup() {
