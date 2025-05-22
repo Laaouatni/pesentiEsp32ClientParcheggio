@@ -15,17 +15,11 @@ const int COLOR_GREEN = thisLista.Color(0, 255, 0);
 
 void wsCallbackReceive(String wsKey, String wsValue) {
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
-  
-  thisLista.begin();
-  thisLista.setBrightness(10);
-  thisLista.fill(0);
-  thisLista.show();
 
   bool canRun = wsKey == "cameraInput";
   if (!canRun) { return; }
   std::vector<String> wsValueArray = laaWifi.splitStringIntoVectorStringArray(wsValue);
   for (int i = 0; i < wsValueArray.size(); i++) {
-    Serial.print(wsValueArray[i] + " " + wsValueArray[i] == "0" ? "✅" : "❌");
     thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
   }
   Serial.println("");
@@ -33,6 +27,10 @@ void wsCallbackReceive(String wsKey, String wsValue) {
 };
 
 void setup() {
+  thisLista.begin();
+  thisLista.setBrightness(10);
+  thisLista.fill(0);
+  thisLista.show();
   laaWifi.laaSetup(String("pesentiws-43f6274c0f11.herokuapp.com"), String("nomeWifi"),
                    String("passwordWifi"));
   laaWifi.laaOnReceiveMessage(&wsCallbackReceive);
