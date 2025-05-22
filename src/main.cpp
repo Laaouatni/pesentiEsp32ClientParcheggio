@@ -22,7 +22,6 @@ void wsCallbackReceive(String wsKey, String wsValue) {
   for (int i = 0; i < wsValueArray.size(); i++) {
     thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
   }
-  Serial.println("");
   thisLista.show();
 };
 
