@@ -28,7 +28,7 @@ class LaaCancello {
   private:
     void     laaMoveCancello(Cancello &cancello, int angolo, String wsKey);
     static void     laaSpegniMotore();
-    static void     laaChiudiCancello(laaChiudiCancelloArgs args);
+    static void     laaChiudiCancello(laaChiudiCancelloArgs *args);
 };
 
 #endif
