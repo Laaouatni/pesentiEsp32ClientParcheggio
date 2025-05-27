@@ -12,17 +12,19 @@ Adafruit_NeoPixel thisLista(60, 4);
 
 const int COLOR_RED   = thisLista.Color(255, 0, 0);
 const int COLOR_GREEN = thisLista.Color(0, 255, 0);
+const int NUM_PARCHEGGI = 9;
 
 void wsCallbackReceive(String wsKey, String wsValue) {
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
 
   bool canRun = wsKey == "cameraInput";
   if (!canRun) { return; }
-  std::vector<String> wsValueArray = laaWifi.splitStringIntoVectorStringArray(wsValue);
-  for (int i = 0; i <= wsValueArray.size(); i++) {
-    thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
-  }
-  thisLista.show();
+  Serial.println("wsValue: " + wsValue);
+  // std::vector<String> wsValueArray = laaWifi.splitStringIntoVectorStringArray(wsValue);
+  // for (int i = 0; i <= wsValueArray.size(); i++) {
+  //   thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
+  // }
+  // thisLista.show();
 };
 
 void setup() {
