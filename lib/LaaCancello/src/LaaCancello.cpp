@@ -4,20 +4,18 @@
 
 Ticker myDelay;
 static Servo *servoToDetach = nullptr;
-static Servo *servoToChiudere = nullptr;
 
 LaaCancello::LaaCancello(int pinEntrata, int pinUscita) {
   cancelloEntrata = {pinEntrata, Servo(), true};
   cancelloUscita = {pinUscita, Servo(), true};
 };
 
-void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo) {
+void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo, String wsKey) {
   cancello.motore.attach(cancello.pin);
   cancello.motore.write(angolo);
   servoToDetach = &cancello.motore;
   myDelay.once_ms(250, &LaaCancello::laaSpegniMotore);
-  servoToChiudere = &cancello.motore;
-  myDelay.once_ms(5000, &LaaCancello::chiudiCancello);
+  myDelay.once_ms(5000, &LaaCancello::laaChiudiCancello(cancello, wsKey));
 }
 
 void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
@@ -32,12 +30,10 @@ void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
   }
 }
 
-void LaaCancello::chiudiCancello() {
-  if (!servoToChiudere) return;
-  cancelloToChiudere->motore.attach(cancello.pin);
-  cancelloToChiudere->motore.write(wsKey == "ingresso" ? 0 : 90);
+void LaaCancello::laaChiudiCancello(Cancello &cancello, String wsKey) {
+  cancello.motore.attach(cancello.pin);
+  cancello.motore.write(wsKey == "ingresso" ? 0 : 90);
   myDelay.once_ms(250, &LaaCancello::laaSpegniMotore);
-  servoToChiudere = nullptr;
 }
 
 void LaaCancello::laaSpegniMotore() {

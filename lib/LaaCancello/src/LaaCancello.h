@@ -20,9 +20,9 @@ class LaaCancello {
     void laaConnectToAppTelecomando(String wsKey, String wsValue);
 
   private:
-    void     laaMoveCancello(Cancello &cancello, int angolo);
+    void     laaMoveCancello(Cancello &cancello, int angolo, String wsKey);
     static void     laaSpegniMotore();
-    void     chiudiCancello();
+    void     laaChiudiCancello(Cancello &cancello, String wsKey);
 };
 
 #endif
