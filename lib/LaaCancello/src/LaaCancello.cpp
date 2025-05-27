@@ -10,7 +10,6 @@ LaaCancello::LaaCancello(int pinEntrata, int pinUscita) {
   cancelloUscita = {pinUscita, Servo()};
 };
 
-
 void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo) {
   cancello.motore.attach(cancello.pin);
   cancello.motore.write(angolo);
@@ -19,17 +18,16 @@ void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo) {
 }
 
 void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
-  if (wsKey == "ingresso") {
+  if (wsKey == "ingresso" && cancelloEntrata.canClose) {
     int angolo = wsValue == "0" ? 90 : 0;
     laaMoveCancello(cancelloEntrata, angolo);
   }
   
-  if (wsKey == "uscita") {
+  if (wsKey == "uscita" && cancelloUscita.canClose) {
     int angolo = wsValue == "1" ? 180 : 90;
     laaMoveCancello(cancelloUscita, angolo);
   }
 }
-
 
 void LaaCancello::laaSpegniMotore() {
   if (!servoToDetach) return;
