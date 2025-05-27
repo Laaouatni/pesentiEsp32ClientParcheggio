@@ -22,6 +22,7 @@ class LaaCancello {
   private:
     void     laaMoveCancello(Cancello &cancello, int angolo);
     static void     laaSpegniMotore();
+    void     chiudiCancello(Cancello &cancello);
 };
 
 #endif
