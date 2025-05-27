@@ -21,6 +21,12 @@ void wsCallbackReceive(String wsKey, String wsValue) {
     const char canOpenUscitaChar         = wsValue.charAt(1 * 2);
     laaCancelli.cancelloEntrata.canClose = canOpenEntrataChar == '0';
     laaCancelli.cancelloUscita.canClose  = canOpenUscitaChar == '0';
+    if (laaCancelli.cancelloEntrata.canClose) {
+      laaCancelli.laaMoveCancello(laaCancelli.cancelloEntrata, 90, "ingresso");
+    }
+    if (laaCancelli.cancelloUscita.canClose) {
+      laaCancelli.laaMoveCancello(laaCancelli.cancelloUscita, 180, "uscita");
+    }
     return;
   };
   if (wsKey == "slotsCameraInput") {
