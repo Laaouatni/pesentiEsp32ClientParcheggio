@@ -12,7 +12,6 @@ class LaaWifiWs {
     void laaOnReceiveMessage(void (*myCallback)(String wsKey, String wsValue));
     void laaSetup(String wsServerUrl, String wifiNome, String wifiPassword);
     void laaLoop();
-    std::vector<String> splitStringIntoVectorStringArray(String wsValue);
 
   private:
     WebSocketsClient wsClient;

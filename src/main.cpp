@@ -16,14 +16,14 @@ const int NUM_PARCHEGGI = 9;
 
 void wsCallbackReceive(String wsKey, String wsValue) {
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
-  bool canRun = wsKey == "cameraInput";
-  if (!canRun) { return; }
-  std::vector<String> wsValueArray = laaWifi.splitStringIntoVectorStringArray(wsValue);
-  if (wsValueArray.empty()) { return; }
-  for (int i = 0; i < wsValueArray.size(); i++) {
-    thisLista.setPixelColor(i, wsValueArray[i] == "0" ? COLOR_GREEN : COLOR_RED);
-  }
-  thisLista.show();
+  if (wsKey == "cameraInput") {
+    for (int ledIndex = 0; ledIndex < NUM_PARCHEGGI; ledIndex++) {
+      const int    charIndex = ledIndex*2;
+      const char thisValue = wsValue.charAt(charIndex);
+      thisLista.setPixelColor(ledIndex, thisValue == "0" ? COLOR_GREEN : COLOR_RED);
+    }
+    thisLista.show();
+  };
 };
 
 void setup() {
