@@ -21,12 +21,12 @@ void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo, String wsKey) 
 void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
   if (wsKey == "ingresso") {
     int angolo = wsValue == "0" ? 90 : cancelloEntrata.canClose ? 0 : 90;
-    laaMoveCancello(cancelloEntrata, angolo);
+    laaMoveCancello(cancelloEntrata, angolo, wsKey);
   }
   
   if (wsKey == "uscita" && cancelloUscita.canClose) {
     int angolo = wsValue == "1" ? 180 : cancelloUscita.canClose ? 90 : 180;
-    laaMoveCancello(cancelloUscita, angolo);
+    laaMoveCancello(cancelloUscita, angolo, wsKey);
   }
 }
 
