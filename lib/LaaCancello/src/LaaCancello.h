@@ -6,10 +6,16 @@
 
 extern Ticker myDelay;
 
+
 struct Cancello {
-    int   pin;
-    Servo motore;
-    bool  canClose;
+  int   pin;
+  Servo motore;
+  bool  canClose;
+};
+
+struct laaChiudiCancelloArgs {
+    Cancello &cancello;
+    String    wsKey;
 };
 
 class LaaCancello {
@@ -22,7 +28,7 @@ class LaaCancello {
   private:
     void     laaMoveCancello(Cancello &cancello, int angolo, String wsKey);
     static void     laaSpegniMotore();
-    void     laaChiudiCancello(Cancello &cancello, String wsKey);
+    void     laaChiudiCancello(laaChiudiCancelloArgs args);
 };
 
 #endif

@@ -6,11 +6,6 @@
 Ticker        myDelay;
 static Servo *servoToDetach = nullptr;
 
-struct laaChiudiCancelloArgs {
-    Cancello &cancello;
-    String    wsKey;
-};
-
 LaaCancello::LaaCancello(int pinEntrata, int pinUscita) {
   cancelloEntrata = {pinEntrata, Servo(), true};
   cancelloUscita  = {pinUscita, Servo(), true};
