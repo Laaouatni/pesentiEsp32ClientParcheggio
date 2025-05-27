@@ -19,8 +19,8 @@ void wsCallbackReceive(String wsKey, String wsValue) {
   if (wsKey == "cameraInput") {
     for (int ledIndex = 0; ledIndex < NUM_PARCHEGGI; ledIndex++) {
       const int    charIndex = ledIndex*2;
-      const char thisValue = wsValue.charAt(charIndex);
-      thisLista.setPixelColor(ledIndex, thisValue == "0" ? COLOR_GREEN : COLOR_RED);
+      const char thisValue = String(wsValue).charAt(charIndex);
+      thisLista.setPixelColor(ledIndex, thisValue == '0' ? COLOR_GREEN : COLOR_RED);
     }
     thisLista.show();
   };
