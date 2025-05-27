@@ -14,8 +14,8 @@ struct Cancello {
 };
 
 struct laaChiudiCancelloArgs {
-    Cancello &cancello;
-    String    wsKey;
+    Cancello* cancello;
+    String*   wsKey;
 };
 
 class LaaCancello {
@@ -28,7 +28,7 @@ class LaaCancello {
   private:
     void     laaMoveCancello(Cancello &cancello, int angolo, String wsKey);
     static void     laaSpegniMotore();
-    void     laaChiudiCancello(laaChiudiCancelloArgs args);
+    static void     laaChiudiCancello(laaChiudiCancelloArgs args);
 };
 
 #endif

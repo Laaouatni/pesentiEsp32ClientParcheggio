@@ -16,7 +16,7 @@ void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo, String wsKey) 
   cancello.motore.write(angolo);
   servoToDetach = &cancello.motore;
   myDelay.once_ms(250, &LaaCancello::laaSpegniMotore);
-  laaChiudiCancelloArgs chiudiCancelloArgs = {cancello, wsKey};
+  laaChiudiCancelloArgs* chiudiCancelloArgs = new laaChiudiCancelloArgs{&ancello,new String(wsKey)};
   myDelay.once_ms(5000, &LaaCancello::laaChiudiCancello, chiudiCancelloArgs);
 }
 
@@ -32,10 +32,13 @@ void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
   }
 }
 
-void LaaCancello::laaChiudiCancello(laaChiudiCancelloArgs args) {
-  args->cancello.motore.attach(args->cancello.pin);
-  args->cancello.motore.write(args->wsKey == "ingresso" ? 0 : 90);
+void LaaCancello::laaChiudiCancello(laaChiudiCancelloArgs *args) {
+  args->cancello->motore.attach(args->cancello->pin);
+  args->cancello->motore.write(args->wsKey == "ingresso" ? 0 : 90);
+  servoToDetach = &args->cancello->motore;
   myDelay.once_ms(250, &LaaCancello::laaSpegniMotore);
+  delete args->wsKey;
+  delete args;
 }
 
 void LaaCancello::laaSpegniMotore() {
