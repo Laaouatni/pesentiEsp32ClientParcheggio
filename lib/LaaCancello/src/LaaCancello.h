@@ -24,9 +24,9 @@ class LaaCancello {
     Cancello cancelloUscita;
     LaaCancello(int pinEntrata, int pinUscita);
     void laaConnectToAppTelecomando(String wsKey, String wsValue);
+    void     laaMoveCancello(Cancello &cancello, int angolo, String wsKey);
 
   private:
-    void     laaMoveCancello(Cancello &cancello, int angolo, String wsKey);
     static void     laaSpegniMotore();
     static void     laaChiudiCancello(laaChiudiCancelloArgs *args);
 };
