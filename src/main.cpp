@@ -18,7 +18,7 @@ void wsCallbackReceive(String wsKey, String wsValue) {
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
   if (wsKey == "cameraInput") {
     for (int ledIndex = 0; ledIndex < NUM_PARCHEGGI; ledIndex++) {
-      const int    charIndex = ledIndex*2;
+      const int  charIndex = ledIndex*2;
       const char thisValue = String(wsValue).charAt(charIndex);
       thisLista.setPixelColor(ledIndex, thisValue == '0' ? COLOR_GREEN : COLOR_RED);
     }
