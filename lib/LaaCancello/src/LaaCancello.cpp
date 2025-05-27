@@ -34,8 +34,8 @@ void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
 
 void LaaCancello::chiudiCancello() {
   if (!servoToChiudere) return;
-  cancello.motore.attach(cancello.pin);
-  cancello.motore.write(wsKey == "ingresso" ? 0 : 90);
+  cancelloToChiudere->motore.attach(cancello.pin);
+  cancelloToChiudere->motore.write(wsKey == "ingresso" ? 0 : 90);
   myDelay.once_ms(250, &LaaCancello::laaSpegniMotore);
   servoToChiudere = nullptr;
 }

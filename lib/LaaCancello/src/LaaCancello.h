@@ -9,7 +9,7 @@ extern Ticker myDelay;
 struct Cancello {
     int   pin;
     Servo motore;
-    bool  canClose = true;
+    bool  canClose;
 };
 
 class LaaCancello {
@@ -22,7 +22,7 @@ class LaaCancello {
   private:
     void     laaMoveCancello(Cancello &cancello, int angolo);
     static void     laaSpegniMotore();
-    void     chiudiCancello(Cancello &cancello);
+    void     chiudiCancello();
 };
 
 #endif
