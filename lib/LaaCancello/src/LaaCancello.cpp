@@ -7,8 +7,8 @@ static Servo *servoToDetach = nullptr;
 static Servo *servoToChiudere = nullptr;
 
 LaaCancello::LaaCancello(int pinEntrata, int pinUscita) {
-  cancelloEntrata = {pinEntrata, Servo()};
-  cancelloUscita = {pinUscita, Servo()};
+  cancelloEntrata = {pinEntrata, Servo(), true};
+  cancelloUscita = {pinUscita, Servo(), true};
 };
 
 void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo) {
