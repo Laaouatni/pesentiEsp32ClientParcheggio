@@ -6,15 +6,9 @@
 
 extern Ticker myDelay;
 
-
 struct Cancello {
   int   pin;
   Servo motore;
-};
-
-struct laaChiudiCancelloArgs {
-    Cancello* cancello;
-    String*   wsKey;
 };
 
 class LaaCancello {
@@ -23,11 +17,11 @@ class LaaCancello {
     Cancello cancelloUscita;
     LaaCancello(int pinEntrata, int pinUscita);
     void laaConnectToAppTelecomando(String wsKey, String wsValue);
-    void     laaMoveCancello(Cancello &cancello, int angolo, String wsKey);
-
-  private:
-    static void     laaSpegniMotore();
-    static void     laaChiudiCancello(laaChiudiCancelloArgs *args);
+    
+    private:
+      static void laaSpegniMotore(Cancello & cancello)
+      void handleCancelloCommand(Cancello & cancello, int angoloOpen, int angoloClose, String wsValue)
+      void     laaMoveCancello(Cancello &cancello, int angolo);
 };
 
 #endif
