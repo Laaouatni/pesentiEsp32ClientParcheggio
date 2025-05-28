@@ -14,7 +14,7 @@ void LaaCancello::laaMoveCancello(Cancello &cancello, int angolo) {
   cancello.motore.attach(cancello.pin);
   cancello.motore.write(angolo);
   if (isStillDetaching) return;
-  myDelay.once_ms(250, &LaaCancello::laaSpegniMotore, &cancello);
+  myDelay.once_ms(250, &LaaCancello::laaSpegniMotore, cancello);
   isStillDetaching = true;
 }
 
