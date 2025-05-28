@@ -1,14 +1,14 @@
 #ifndef LAA_CANCELLO_H
 #define LAA_CANCELLO_H
 
-#include <Ticker.h>
 #include <ESP32Servo.h>
+#include <Ticker.h>
 
 extern Ticker myDelay;
 
 struct Cancello {
-  int   pin;
-  Servo motore;
+    int   pin;
+    Servo motore;
 };
 
 class LaaCancello {
@@ -17,11 +17,12 @@ class LaaCancello {
     Cancello cancelloUscita;
     LaaCancello(int pinEntrata, int pinUscita);
     void laaConnectToAppTelecomando(String wsKey, String wsValue);
-    
-    private:
-      static void laaSpegniMotore(Cancello & cancello)
-      void handleCancelloCommand(Cancello & cancello, int angoloOpen, int angoloClose, String wsValue)
-      void     laaMoveCancello(Cancello &cancello, int angolo);
+
+  private:
+    bool        isStillDetaching = false;
+    static void laaSpegniMotore(Cancello &cancello);
+    void handleCancelloCommand(Cancello &cancello, int angoloOpen, int angoloClose, String wsValue);
+    void laaMoveCancello(Cancello &cancello, int angolo);
 };
 
 #endif
