@@ -45,8 +45,8 @@ void setup() {
   thisLista.setBrightness(10);
   thisLista.fill(0);
   thisLista.show();
-  laaWifi.laaSetup(String("pesentiws-43f6274c0f11.herokuapp.com"), String("nomeWifi"),
-                   String("passwordWifi"));
+  laaWifi.laaSetup(String("pesentiws-43f6274c0f11.herokuapp.com"), String("iPhone di Nithina"),
+                   String("12345678"));
   laaWifi.laaOnReceiveMessage(&wsCallbackReceive);
 };
 
