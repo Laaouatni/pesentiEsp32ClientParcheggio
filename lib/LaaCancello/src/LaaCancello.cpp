@@ -5,6 +5,8 @@
 
 Ticker myDelay;
 
+bool LaaCancello::isStillDetaching = false;
+
 LaaCancello::LaaCancello(int pinEntrata, int pinUscita) {
   cancelloEntrata = {pinEntrata, Servo()};
   cancelloUscita  = {pinUscita, Servo()};
