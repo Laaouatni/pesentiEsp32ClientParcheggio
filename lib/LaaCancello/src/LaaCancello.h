@@ -10,7 +10,6 @@ extern Ticker myDelay;
 struct Cancello {
   int   pin;
   Servo motore;
-  bool  canClose;
 };
 
 struct laaChiudiCancelloArgs {

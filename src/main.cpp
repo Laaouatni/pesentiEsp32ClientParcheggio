@@ -15,28 +15,28 @@ const int NUM_PARCHEGGI              = 9;
 const int LED_INDEXES[NUM_PARCHEGGI] = {50,47,43,30,26,23,10,6,3};
 
 void wsCallbackReceive(String wsKey, String wsValue) {
-  if (wsKey == "cancelloCameraInput") {
-    const char canOpenEntrataChar        = wsValue.charAt(0 * 2);
-    const char canOpenUscitaChar         = wsValue.charAt(1 * 2);
-    laaCancelli.cancelloEntrata.canClose = canOpenEntrataChar == '0';
-    laaCancelli.cancelloUscita.canClose  = canOpenUscitaChar == '0';
-    if (laaCancelli.cancelloEntrata.canClose) {
-      laaCancelli.laaMoveCancello(laaCancelli.cancelloEntrata, 90, "ingresso");
-    }
-    if (laaCancelli.cancelloUscita.canClose) {
-      laaCancelli.laaMoveCancello(laaCancelli.cancelloUscita, 180, "uscita");
-    }
-    return;
-  };
-  if (wsKey == "slotsCameraInput") {
-    for (int ledIndex = 0; ledIndex < NUM_PARCHEGGI; ledIndex++) {
-      const int  charIndex = ledIndex * 2;
-      const char thisValue = String(wsValue).charAt(charIndex);
-      thisLista.setPixelColor(LED_INDEXES[ledIndex], thisValue == '0' ? COLOR_GREEN : COLOR_RED);
-    }
-    thisLista.show();
-    return;
-  };
+  // if (wsKey == "cancelloCameraInput") {
+  //   const char canOpenEntrataChar        = wsValue.charAt(0 * 2);
+  //   const char canOpenUscitaChar         = wsValue.charAt(1 * 2);
+  //   laaCancelli.cancelloEntrata.canClose = canOpenEntrataChar == '0';
+  //   laaCancelli.cancelloUscita.canClose  = canOpenUscitaChar == '0';
+  //   if (laaCancelli.cancelloEntrata.canClose) {
+  //     laaCancelli.laaMoveCancello(laaCancelli.cancelloEntrata, 90, "ingresso");
+  //   }
+  //   if (laaCancelli.cancelloUscita.canClose) {
+  //     laaCancelli.laaMoveCancello(laaCancelli.cancelloUscita, 180, "uscita");
+  //   }
+  //   return;
+  // };
+  // if (wsKey == "slotsCameraInput") {
+  //   for (int ledIndex = 0; ledIndex < NUM_PARCHEGGI; ledIndex++) {
+  //     const int  charIndex = ledIndex * 2;
+  //     const char thisValue = String(wsValue).charAt(charIndex);
+  //     thisLista.setPixelColor(LED_INDEXES[ledIndex], thisValue == '0' ? COLOR_GREEN : COLOR_RED);
+  //   }
+  //   thisLista.show();
+  //   return;
+  // };
   laaCancelli.laaConnectToAppTelecomando(wsKey, wsValue);
 };
 
