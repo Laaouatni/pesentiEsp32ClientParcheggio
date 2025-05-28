@@ -19,8 +19,8 @@ class LaaCancello {
     void laaConnectToAppTelecomando(String wsKey, String wsValue);
 
   private:
-    bool        isStillDetaching = false;
-    static void laaSpegniMotore(Cancello &cancello);
+    static bool isStillDetaching = false;
+    static void laaSpegniMotore(Cancello *cancello);
     void handleCancelloCommand(Cancello &cancello, int angoloOpen, int angoloClose, String wsValue);
     void laaMoveCancello(Cancello &cancello, int angolo);
 };
