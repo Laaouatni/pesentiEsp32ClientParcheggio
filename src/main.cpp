@@ -12,7 +12,7 @@ Adafruit_NeoPixel thisLista(60, 4);
 const int COLOR_RED                  = thisLista.Color(255, 0, 0);
 const int COLOR_GREEN                = thisLista.Color(0, 255, 0);
 const int NUM_PARCHEGGI              = 9;
-const int LED_INDEXES[NUM_PARCHEGGI] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+const int LED_INDEXES[NUM_PARCHEGGI] = {3, 6, 10, 23, 26, 30, 43, 47, 50};
 
 void wsCallbackReceive(String wsKey, String wsValue) {
   if (wsKey == "cancelloCameraInput") {
