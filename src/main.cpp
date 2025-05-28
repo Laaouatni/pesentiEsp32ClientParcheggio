@@ -1,6 +1,5 @@
 #include "LaaCancello.h"
 #include "LaaWifiWsBoiderplate.h"
-// #include "LaaListaLed.h"
 
 #include <Adafruit_NeoPixel.h>
 #include <Arduino.h>
