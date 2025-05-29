@@ -30,11 +30,11 @@ void LaaCancello::handleCancelloCommand(Cancello &cancello, int angoloOpen, int 
 void LaaCancello::laaConnectToAppTelecomando(String wsKey, String wsValue) {
   if (wsKey == "ingresso") {
     const int ANGOLO_OPEN  = 90;
-    const int ANGOLO_CLOSE = 180;
+    const int ANGOLO_CLOSE = 0;
     handleCancelloCommand(cancelloEntrata, ANGOLO_OPEN, ANGOLO_CLOSE, wsValue);
   } else if (wsKey == "uscita") {
     const int ANGOLO_OPEN  = 90;
-    const int ANGOLO_CLOSE = 0;
+    const int ANGOLO_CLOSE = 180;
     handleCancelloCommand(cancelloUscita, ANGOLO_OPEN, ANGOLO_CLOSE, wsValue);
   }
 }
